@@ -1,0 +1,18 @@
+{% extends '../base.html' %}
+
+{% block title %}Listagem{% endblock %}
+{{veiculos|length}}
+{{veiculos}}
+{% block content %}
+<h1>teste</h1>
+{% for v in Veiculos %}
+<div class="card" style="width: 18rem;">
+    <img class="card-img-top" src="{{v.foto}}" alt="Card image cap">
+    <div class="card-body">
+      <h5 class="card-title">{{v.modelo}}</h5>
+      <p class="card-text">{{v.marca}}</p>
+      <a href="#" class="btn btn-primary">Go somewhere</a>
+    </div>
+  </div>
+{% endfor %}
+{% endblock %}
