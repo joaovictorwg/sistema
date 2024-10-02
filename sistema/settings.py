@@ -1,3 +1,4 @@
+import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -113,6 +114,7 @@ STATICROOT = BASE_DIR/'static'
 STATICFILES_DIRS = [BASE_DIR/'sistema'/'static']
 
 MEDIA_URL = '/media/'
+
 
 
 # Default primary key field type

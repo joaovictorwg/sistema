@@ -1,18 +1,37 @@
 {% extends '../base.html' %}
 
+{% block navbar %}
+  {% include 'components/navbar.html' %}
+{% endblock %}
+
 {% block title %}Listagem{% endblock %}
-{{veiculos|length}}
-{{veiculos}}
-{% block content %}
-<h1>teste</h1>
-{% for v in Veiculos %}
-<div class="card" style="width: 18rem;">
-    <img class="card-img-top" src="{{v.foto}}" alt="Card image cap">
-    <div class="card-body">
-      <h5 class="card-title">{{v.modelo}}</h5>
-      <p class="card-text">{{v.marca}}</p>
-      <a href="#" class="btn btn-primary">Go somewhere</a>
+
+<!-- Testando o tamanho da lista de veículos -->
+<p>Total de veículos: {{ veiculos|length }}</p>
+
+<!-- Testando a impressão de todos os veículos -->
+<pre>{{ veiculos }}</pre>
+
+{% block list %}
+  <div class="div-lista">
+    <h1>Lista de Veículos</h1>
+    <div class="row">
+      {% for v in veiculos %}  <!-- Corrigido para veiculos -->
+        <div class="card" style="width: 18rem; margin: 10px;">
+          <img class="card-img-top" src="{{ v.foto.url }}" alt="{{ v.modelo }}">
+          <div class="card-body">
+            <h5 class="card-title">{{ v.modelo }}</h5>
+            <p class="card-text">Marca: {{ v.marca }}</p>
+            <a href="#" class="btn btn-primary">Ver Detalhes</a>
+          </div>
+        </div>
+      {% empty %}
+        <p>Não há veículos disponíveis no momento.</p>
+      {% endfor %}
     </div>
   </div>
-{% endfor %}
+{% endblock %}
+
+{% block footer %}
+  {% include 'components/footer.html' %}
 {% endblock %}

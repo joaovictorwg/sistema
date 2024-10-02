@@ -33,9 +33,3 @@ class Logout(View):
         logout(request)
         return redirect(settings.LOGIN_URL)
     
-class Veiculos(View):
-    
-    def get(self, request):
-        if request.user.is_authenticated:
-            return render(request, 'veiculos.html')  # Certifique-se de que este template existe
-        return redirect('login')  # Redireciona para a página de login se não estiver autenticado
