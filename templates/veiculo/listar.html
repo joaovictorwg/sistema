@@ -22,7 +22,8 @@
           <div class="card-body">
             <h5 class="card-title">{{ v.modelo }}</h5>
             <p class="card-text">Marca: {{ v.marca }}</p>
-            <a href="#" class="btn btn-primary">Ver Detalhes</a>
+            <a class="nav-link" href="{% url 'editar-veiculo' v.id %}">Editar</a>
+            <a class="nav-link" href="{% url 'deletar-veiculo' v.id %}">Deletar</a>
           </div>
         </div>
       {% empty %}

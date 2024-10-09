@@ -1,0 +1,14 @@
+[MASTER]
+load-plugins=pylint_django
+
+[TYPECHECK]
+# Ignorar a checagem de classes que herdam de models.Model
+ignored-classes=models.Model
+
+# Outras configurações do Pylint que podem ser úteis
+[MESSAGES CONTROL]
+# Ignore algumas mensagens que frequentemente causam problemas em projetos Django
+disable=
+    C0114, # Missing module docstring
+    C0115, # Missing class docstring
+    C0116  # Missing function docstring

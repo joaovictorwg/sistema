@@ -1,0 +1,27 @@
+{% extends '../base.html' %}
+
+{% block navbar %}
+  {% include 'components/navbar.html' %}
+{% endblock %}
+
+{% block title %}Deletar Veículo{% endblock %}
+
+{% block list %}
+<div class="container mt-5">
+    <h2 class="mb-4">Deletar Veículo</h2>
+    <p>Tem certeza de que deseja deletar o veículo <strong>{{ veiculo.marca }} {{ veiculo.modelo }} ({{ veiculo.ano }})</strong>?</p>
+    <p>Essa ação não poderá ser desfeita.</p>
+
+    <form action="{% url 'deletar-veiculo' veiculo.pk %}" method="post">
+        {% csrf_token %}
+        <div class="d-flex justify-content-end">
+            <a href="{% url 'listar-veiculos' %}" class="btn btn-secondary mr-2">Cancelar</a>
+            <button type="submit" class="btn btn-danger">Deletar</button>
+        </div>
+    </form>
+</div>
+{% endblock %}
+
+{% block footer %}
+  {% include 'components/footer.html' %}
+{% endblock %}

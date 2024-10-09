@@ -113,7 +113,7 @@ STATIC_URL = '/static/'
 STATICROOT = BASE_DIR/'static'
 STATICFILES_DIRS = [BASE_DIR/'sistema'/'static']
 
-MEDIA_URL = '/media/'
+
 
 
 
