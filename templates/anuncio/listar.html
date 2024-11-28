@@ -1,0 +1,63 @@
+{% extends '../base.html' %}
+
+{% block navbar %}
+<nav class="navbar navbar-expand-lg bg-primary text-white">
+  <div class="container-fluid">
+      <a class="navbar-brand text-white" href="/veiculo/">Listagem de Veiculos</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+          <div class="navbar-nav">
+              <a class="nav-link active text-white" aria-current="page" href="/anuncio/novo/">Adicionar Anúncio</a>
+              <a class="nav-link text-white" href="/logout/">Sair</a>
+              <!-- <a class="nav-link disabled" aria-disabled="true">Disabled</a>-->
+          </div>
+      </div>
+  </div>
+</nav>
+{% endblock %}
+
+{% block title %}Listagem{% endblock %}
+
+<!-- Testando o tamanho da lista de anúncios -->
+<p>Total de anúncios: {{ anuncios|length }}</p>
+
+<!-- Testando a impressão de todos os anúncios -->
+<pre>{{ veiculos }}</pre>
+
+{% block list %}
+  <div class="div-lista">
+    
+    <div class="row">
+        <h3>Listando o(s) {{anuncios|length}} anúncio(s):</h3>
+      {% for a in anuncios %}  <!-- Corrigido para anuncios -->
+      
+        <div class="card" style="width: 18rem; margin: 10px;">
+          
+          <h5>Anuncio {{ a.veiculo.get_marca_display }} - {{  a.veiculo.modelo  }} {{ a.veiculo.ano}}</h5>
+          <img class="card-img-top" src="{{ a.veiculo.foto.url }}" alt="{{ a.veiculo.modelo }}">
+          
+          <div class="card-body">
+            <p class="card-text">Descrição: {{  a.descricao }}</p>
+            <p class="card-text">Preço: R${{ a.preco }}</p>
+            <p class="card-text">Cor: {{ a.veiculo.get_cor_display }}</p>
+            <p class="card-text">Combustivel: {{ a.veiculo.get_combustivel_display }}</p>
+            <p class="card-text">Anunciante: {{ a.usuario }}</p>
+            
+            <a href="/anuncio/{{a.id}}" class="btn btn-primary">Editar</a>
+            <a href="/anuncio/deletar/{{a.id}}" class="btn btn-danger">Deletar</a>
+           
+          </div> 
+        </div>
+      {% empty %}
+        <p>Não há anúncios disponíveis no momento.</p>
+      {% endfor %}
+    </div>
+  </div>
+{% endblock %}
+
+<!--{% block footer %}
+  {% include 'components/footer.html' %}
+{% endblock %}
+-->

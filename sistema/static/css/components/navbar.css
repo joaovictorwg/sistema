@@ -1,5 +1,6 @@
 .navbar{
     width: 100%;
+    background-color: black !important;
 }
 .navbar-expand-lg .navbar-collapse {
     display: flex !important;

@@ -1,0 +1,59 @@
+{% extends '../base.html' %}
+
+{% block navbar %}
+  {% include 'components/navbar.html' %}
+{% endblock %}
+
+{% block title %}Criar Anúncio{% endblock %}
+
+{% block list %}
+<div class="container mt-5">
+    <h2 class="mb-4">Criar Novo Anúncio</h2>
+    <form action="{% url 'criar-anuncios' %}" method="post" enctype="multipart/form-data"> 
+        {% csrf_token %}
+        
+        <div class="col-md-6">
+            <div class="col-md-6 mb-3">
+                <label for="id_veiculo" class="form-label">Veículo</label>
+                <select name="veiculo" id="id_veiculo" class="form-select">
+                    {% for veiculo in form.veiculo.field.queryset %}
+                        {% if veiculo.anuncios.count == 0 %}
+                            <option value="{{ veiculo.id }}">{{ veiculo.modelo }}</option>
+                        {% endif %}
+                    {% endfor %}
+                </select>
+            </div>
+            
+
+            <div class="col-md-6 mb-3">
+                <label for="id_preco" class="form-label">Preço</label>
+                {{ form.preco }}
+            </div>
+
+
+            <div class="col-md-6 mb-3">
+                <label for="id_descricao" class="form-label">Descrição</label>
+                {{ form.descricao }}
+            </div>
+
+            <div class="col-md-6 mb-3">
+                <label for="id_usuario" class="form-label">Anunciante</label>
+                {{ form.usuario }}
+            </div>
+            
+            <br>
+            
+            <div class="row">
+                <div class="d-flex justify-content-end">
+                    <button type="submit" class="btn btn-primary me-2">Criar Anúncio</button>
+                    <a href="{% url 'listar-anuncios' %}" class="btn btn-danger">Cancelar</a>
+                </div>
+            </div>
+            
+        </div>
+
+
+       
+    </form>
+</div>
+{% endblock %}

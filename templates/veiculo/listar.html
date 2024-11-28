@@ -22,8 +22,11 @@
           <div class="card-body">
             <h5 class="card-title">{{ v.modelo }}</h5>
             <p class="card-text">Marca: {{ v.marca }}</p>
-            <a class="nav-link" href="{% url 'editar-veiculo' v.id %}">Editar</a>
-            <a class="nav-link" href="{% url 'deletar-veiculo' v.id %}">Deletar</a>
+            <p class="card-text">Combustivel: {{ v.combustivel }}</p>
+            <p class="card-text">Cor: {{ v.cor }}</p>
+            <p class="card-text">Ano: {{ v.ano }}</p>
+            <a class="button" href="{% url 'editar-veiculo' v.id %}">Editar</a>
+            <a class="button" href="{% url 'deletar-veiculo' v.id %}">Deletar</a>
           </div>
         </div>
       {% empty %}
